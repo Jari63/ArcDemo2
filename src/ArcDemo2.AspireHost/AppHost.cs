@@ -27,7 +27,7 @@ var papercut = builder.AddContainer("papercut", "jijiechen/papercut", "latest")
 
 // register the API project and link the DB
 builder.AddProject<Projects.ArcDemo2_Web>("web")
-      .WithExternalHttpEndpoints() // for debugging and testing without the host
+      //.WithExternalHttpEndpoints() // for debugging and testing without the host
       .WithEnvironment("ASPNETCORE_ENVIRONMENT", builder.Environment.EnvironmentName)
       .WithReference(appDb)
       .WaitFor(papercut)

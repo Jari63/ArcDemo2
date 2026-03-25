@@ -6,3 +6,24 @@ services:
     language: dotnet
     project: ./src/ArcDemo2.AspireHost/ArcDemo2.AspireHost.csproj
     host: containerapp
+
+hooks:
+  postprovision:
+    posix:
+      shell: sh
+      run: |
+        az containerapp ingress update \
+          --name web \
+          --resource-group rg-${AZURE_ENV_NAME} \
+          --type external \
+          --allow-insecure false \
+          --target-port 8080
+    windows:
+      shell: pwsh
+      run: |
+        az containerapp ingress update `
+          --name web `
+          --resource-group "rg-$env:AZURE_ENV_NAME" `
+          --type external `
+          --allow-insecure false `
+          --target-port 8080
