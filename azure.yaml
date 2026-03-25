@@ -1,14 +1,14 @@
 # yaml-language-server: $schema=https://raw.githubusercontent.com/Azure/azure-dev/main/schemas/v1.0/azure.yaml.json
 
 name: arc-demo2
-services:  
+services:
   app:
     language: dotnet
     project: ./src/ArcDemo2.AspireHost/ArcDemo2.AspireHost.csproj
     host: containerapp
 
 hooks:
-  postprovision:
+  postdeploy:
     posix:
       shell: sh
       run: |
