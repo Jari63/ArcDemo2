@@ -30,8 +30,6 @@
     </PackageReference>
     
     <PackageReference Include="MailKit" />
-    <PackageReference Include="MimeKit" />
-    <PackageReference Include="Scriban" />
     <PackageReference Include="NimblePros.Metronome" />
     <PackageReference Include="Scalar.AspNetCore" />
     <PackageReference Include="Serilog.AspNetCore" />

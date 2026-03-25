@@ -1,4 +1,4 @@
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using ArcDemo2.Web.Domain.ProductAggregate;
 
@@ -22,16 +22,13 @@ public class ProductConfiguration : IEntityTypeConfiguration<Product>
       .IsRequired();
 
     builder.HasData(
-      new Product(
-        ProductId.From(1),
+      Product.Create(
         "Coffee Mug",
         9.99m),
-      new Product(
-        ProductId.From(2),
+      Product.Create(
         "T-Shirt",
         19.99m),
-      new Product(
-        ProductId.From(3),
+      Product.Create(
         "Sticker Pack",
         3.99m)
     );
