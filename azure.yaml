@@ -12,18 +12,22 @@ hooks:
     posix:
       shell: sh
       run: |
-        az containerapp ingress update \
-          --name web \
-          --resource-group rg-${AZURE_ENV_NAME} \
-          --type external \
-          --allow-insecure false \
-          --target-port 8080
+        if [ "$ASPNETCORE_ENVIRONMENT" = "Development" ]; then
+          az containerapp ingress update \
+            --name web \
+            --resource-group rg-${AZURE_ENV_NAME} \
+            --type external \
+            --allow-insecure false \
+            --target-port 8080
+        fi
     windows:
       shell: pwsh
       run: |
-        az containerapp ingress update `
-          --name web `
-          --resource-group "rg-$env:AZURE_ENV_NAME" `
-          --type external `
-          --allow-insecure false `
-          --target-port 8080
+        if ($env:ASPNETCORE_ENVIRONMENT -eq "Development") {
+          az containerapp ingress update `
+            --name web `
+            --resource-group "rg-$env:AZURE_ENV_NAME" `
+            --type external `
+            --allow-insecure false `
+            --target-port 8080
+        }

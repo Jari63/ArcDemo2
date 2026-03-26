@@ -13,7 +13,7 @@ properties:
       dotnet:
         autoConfigureDataProtection: true
     ingress:
-      external: true
+      external: false
       targetPort: {{ targetPortOrDefault 8080 }}
       transport: http
       allowInsecure: false
@@ -45,7 +45,7 @@ properties:
           - name: APPDB_USERNAME
             value: sa
           - name: ASPNETCORE_ENVIRONMENT
-            value: Development
+            value: {{ .Env.ASPNETCORE_ENVIRONMENT }}
           - name: ASPNETCORE_FORWARDEDHEADERS_ENABLED
             value: "true"
           - name: HTTP_PORTS
