@@ -57,6 +57,10 @@ jobs:
         env:
           AZURE_SQLSERVER_PASSWORD: ${{ secrets.AZURE_SQLSERVER_PASSWORD }}
 
+      - name: Set azd environment variables
+        run: azd env set ASPNETCORE_ENVIRONMENT "$Env:ASPNETCORE_ENVIRONMENT" --no-prompt
+        shell: pwsh
+
       - name: Deploy Application
         run: azd deploy --no-prompt
         env:
@@ -106,6 +110,10 @@ jobs:
         run: azd provision --no-prompt
         env:
           AZURE_SQLSERVER_PASSWORD: ${{ secrets.AZURE_SQLSERVER_PASSWORD }}
+
+      - name: Set azd environment variables
+        run: azd env set ASPNETCORE_ENVIRONMENT "$Env:ASPNETCORE_ENVIRONMENT" --no-prompt
+        shell: pwsh
 
       - name: Deploy Application
         run: azd deploy --no-prompt
