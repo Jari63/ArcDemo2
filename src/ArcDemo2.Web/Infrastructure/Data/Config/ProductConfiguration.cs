@@ -22,15 +22,9 @@ public class ProductConfiguration : IEntityTypeConfiguration<Product>
       .IsRequired();
 
     builder.HasData(
-      Product.Create(
-        "Coffee Mug",
-        9.99m),
-      Product.Create(
-        "T-Shirt",
-        19.99m),
-      Product.Create(
-        "Sticker Pack",
-        3.99m)
+      new Product(ProductId.From(1), "Coffee Mug", 9.99m),
+      new Product(ProductId.From(2), "T-Shirt", 19.99m),
+      new Product(ProductId.From(3), "Sticker Pack", 3.99m)
     );
   }
 }
